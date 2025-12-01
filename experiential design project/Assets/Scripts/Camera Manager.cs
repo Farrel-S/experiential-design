@@ -36,6 +36,10 @@ public class CameraManager : MonoBehaviour
         ActivateARCamera();
         Debug.Log("Scanning started...");
     }
-    
+
+    public void TargetFound()
+    {
+        Debug.Log("Target Found!");
+    }
 
 }
