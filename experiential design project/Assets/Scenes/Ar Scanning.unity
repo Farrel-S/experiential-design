@@ -20061,6 +20061,7 @@ GameObject:
   - component: {fileID: 1261355674}
   - component: {fileID: 1261355673}
   - component: {fileID: 1261355672}
+  - component: {fileID: 1261355676}
   m_Layer: 0
   m_Name: Rotation Anchor
   m_TagString: Rotatable
@@ -20162,6 +20163,22 @@ Transform:
   - {fileID: 1831439689}
   m_Father: {fileID: 68607838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1261355676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261355671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARDragRotateZoom
+  rotationSpeed: 0.2
+  zoomSpeed: 0.01
+  minScale: 0.5
+  maxScale: 2
 --- !u!1001 &1275883139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22635,7 +22652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1411948503}
   - component: {fileID: 1411948502}
-  - component: {fileID: 1411948504}
   m_Layer: 0
   m_Name: Camera Manager
   m_TagString: Untagged
@@ -22673,36 +22689,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1411948504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411948501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
-  objectGroup: {fileID: 1261355671}
-  rotationSpeed: 0.05
-  tapAction:
-    m_Name: Tap
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 32d99a10-e757-45df-aef3-22abbeced1e2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  raycastCamera: {fileID: 0}
-  rotatableMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  rotatableTag: Rotatable
-  requireTag: 1
-  fallbackToDefault: 0
 --- !u!1001 &1414589282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26793,6 +26779,7 @@ GameObject:
   - component: {fileID: 1722765123}
   - component: {fileID: 1722765122}
   - component: {fileID: 1722765121}
+  - component: {fileID: 1722765124}
   m_Layer: 0
   m_Name: Rotation Anchor
   m_TagString: Rotatable
@@ -26894,6 +26881,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722765119}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1722765124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722765119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
+  rotationSpeed: 0.2
+  zoomSpeed: 0.01
+  minScale: 0.5
+  maxScale: 2
 --- !u!1001 &1730928779
 PrefabInstance:
   m_ObjectHideFlags: 0
