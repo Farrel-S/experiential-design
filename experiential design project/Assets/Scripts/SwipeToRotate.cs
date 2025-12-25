@@ -9,6 +9,15 @@ public class SwipeToRotate : MonoBehaviour
     public InputAction tapAction;
     private InputAction pointerPositionAction;
     private InputAction pointerPressAction;
+    // Camera used for screen-to-world raycasts (defaults to Camera.main if null)
+    public Camera raycastCamera;
+    // Optional layer mask to restrict what can be selected for rotation
+    public LayerMask rotatableMask = ~0; // default: everything
+    // Optional tag filter: only objects (or their parents) with this tag are rotatable
+    public string rotatableTag = "Rotatable";
+    public bool requireTag = true;
+    // If true, when nothing is selected, rotate the default `objectGroup`; if false, do nothing
+    public bool fallbackToDefault = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -51,6 +60,9 @@ public class SwipeToRotate : MonoBehaviour
         {
             lastPointerPos = pointerPositionAction.ReadValue<Vector2>();
         }
+
+        // On press start, select the object under the pointer (if any)
+        TrySelectTarget(lastPointerPos);
     }
 
     private void OnPointerPressCanceled(InputAction.CallbackContext ctx)
@@ -61,7 +73,10 @@ public class SwipeToRotate : MonoBehaviour
 
     void Start()
     {
-        objectGroup.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (objectGroup != null)
+        {
+            objectGroup.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     // Update is called once per frame
@@ -113,12 +128,19 @@ public class SwipeToRotate : MonoBehaviour
     public void OnSwipe(Vector2 swipeDelta)
     {
         float rotationY = swipeDelta.x * rotationSpeed;
-        objectGroup.transform.Rotate(0, -rotationY, 0, Space.World);
+        Transform target = currentTarget;
+        if (target == null && fallbackToDefault && objectGroup != null)
+        {
+            target = objectGroup.transform;
+        }
+        if (target == null) return; // no selection, and no fallback
+        target.Rotate(0, -rotationY, 0, Space.World);
     }
 
     // Internal state for drag rotation
     private bool isPressing = false;
     private Vector2 lastPointerPos = Vector2.zero;
+    private Transform currentTarget = null;
 
     private void HandlePointer(bool pressed, Vector2 pointerPos)
     {
@@ -129,6 +151,7 @@ public class SwipeToRotate : MonoBehaviour
                 // start of press/drag
                 isPressing = true;
                 lastPointerPos = pointerPos;
+                TrySelectTarget(pointerPos);
                 return;
             }
 
@@ -138,17 +161,69 @@ public class SwipeToRotate : MonoBehaviour
 
             // Horizontal movement will rotate around local Y axis (yaw)
             float rotY = delta.x * -rotationSpeed;
-            objectGroup.transform.Rotate(0f, rotY, 0f, Space.Self);
+            Transform target = currentTarget;
+            if (target == null && fallbackToDefault && objectGroup != null)
+            {
+                target = objectGroup.transform;
+            }
+            if (target != null)
+            {
+                target.Rotate(0f, rotY, 0f, Space.Self);
+            }
         }
         else
         {
             // released
             isPressing = false;
+            currentTarget = null;
         }
     }
 
     private void OnPress(InputAction.CallbackContext context)
     {
         Debug.Log("Screen Pressed");
+    }
+
+    private void TrySelectTarget(Vector2 screenPos)
+    {
+        // Use configured camera or fall back
+        Camera cam = raycastCamera != null ? raycastCamera : Camera.main;
+        if (cam == null) return;
+
+        // Raycast into the scene from the screen position
+        Ray ray = cam.ScreenPointToRay(screenPos);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, rotatableMask))
+        {
+            Transform candidate = hitInfo.transform;
+            if (requireTag && !HasTagInParents(candidate, rotatableTag))
+            {
+                currentTarget = null;
+                return;
+            }
+            // Prefer the nearest parent that carries the tag if requireTag is true
+            currentTarget = requireTag ? FindTaggedAncestor(candidate, rotatableTag) ?? candidate : candidate;
+        }
+    }
+
+    private bool HasTagInParents(Transform t, string tag)
+    {
+        Transform cur = t;
+        while (cur != null)
+        {
+            if (cur.CompareTag(tag)) return true;
+            cur = cur.parent;
+        }
+        return false;
+    }
+
+    private Transform FindTaggedAncestor(Transform t, string tag)
+    {
+        Transform cur = t;
+        while (cur != null)
+        {
+            if (cur.CompareTag(tag)) return cur;
+            cur = cur.parent;
+        }
+        return null;
     }
 }
