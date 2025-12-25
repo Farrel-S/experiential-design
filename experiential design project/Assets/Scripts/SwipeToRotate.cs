@@ -66,7 +66,7 @@ public class SwipeToRotate : MonoBehaviour
         else if (Input.GetMouseButton(0) && isDragging)
         {
             Vector2 delta = (Vector2)Input.mousePosition - lastInputPosition;
-            transform.Rotate(Vector3.up, delta.x * rotationSpeed, Space.World);
+            transform.Rotate(Vector3.up, delta.x * rotationSpeed, Space.Self);
             lastInputPosition = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0))
@@ -98,7 +98,7 @@ public class SwipeToRotate : MonoBehaviour
             else if (touch.phase == TouchPhase.Moved)
             {
                 Vector2 delta = touch.position - lastInputPosition;
-                transform.Rotate(Vector3.up, delta.x * rotationSpeed, Space.World);
+                transform.Rotate(Vector3.up, delta.x * rotationSpeed, Space.Self);
                 lastInputPosition = touch.position;
             }
         }
