@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: VuforiaScripts::DefaultObserverEventHandler
-  StatusFilter: 1
+  StatusFilter: 0
   UsePoseSmoothing: 0
   AnimationCurve:
     serializedVersion: 2
@@ -10661,6 +10661,7 @@ GameObject:
   - component: {fileID: 688337293}
   - component: {fileID: 688337292}
   - component: {fileID: 688337291}
+  - component: {fileID: 688337294}
   m_Layer: 0
   m_Name: Rotation Anchor
   m_TagString: Rotatable
@@ -10762,6 +10763,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688337289}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &688337294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688337289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
+  rotationSpeed: 0.2
+  zoomSpeed: 0.0001
+  minScale: 0.01
+  maxScale: 2
 --- !u!1001 &692217869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14524,6 +14541,7 @@ GameObject:
   - component: {fileID: 901932686}
   - component: {fileID: 901932685}
   - component: {fileID: 901932684}
+  - component: {fileID: 901932687}
   m_Layer: 0
   m_Name: Rotation Anchor
   m_TagString: Rotatable
@@ -14625,6 +14643,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901932682}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &901932687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901932682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
+  rotationSpeed: 0.2
+  zoomSpeed: 0.0001
+  minScale: 0.01
+  maxScale: 2
 --- !u!1 &905705962
 GameObject:
   m_ObjectHideFlags: 0
@@ -18705,6 +18739,7 @@ GameObject:
   - component: {fileID: 1183944283}
   - component: {fileID: 1183944282}
   - component: {fileID: 1183944281}
+  - component: {fileID: 1183944284}
   m_Layer: 0
   m_Name: Rotation Anchor
   m_TagString: Rotatable
@@ -18806,6 +18841,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183944279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1183944284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183944279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4233868820ad4881c629c5401052b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
+  rotationSpeed: 0.2
+  zoomSpeed: 0.0001
+  minScale: 0.01
+  maxScale: 2
 --- !u!1001 &1184625695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20176,8 +20227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARDragRotateZoom
   rotationSpeed: 0.2
-  zoomSpeed: 0.01
-  minScale: 0.5
+  zoomSpeed: 0.0001
+  minScale: 0.01
   maxScale: 2
 --- !u!1001 &1275883139
 PrefabInstance:
@@ -26894,8 +26945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwipeToRotate
   rotationSpeed: 0.2
-  zoomSpeed: 0.01
-  minScale: 0.5
+  zoomSpeed: 0.0001
+  minScale: 0.01
   maxScale: 2
 --- !u!1001 &1730928779
 PrefabInstance:
@@ -33308,7 +33359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: VuforiaScripts::DefaultObserverEventHandler
-  StatusFilter: 1
+  StatusFilter: 0
   UsePoseSmoothing: 0
   AnimationCurve:
     serializedVersion: 2
