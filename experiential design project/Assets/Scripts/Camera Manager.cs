@@ -5,12 +5,24 @@ public class CameraManager : MonoBehaviour
     public GameObject ARCamera;
     public GameObject Hidden;
     public GameObject Visible;
+    public enum CameraState
+    {
+        ACTIVE,
+        INACTIVE
+    }
+
+    public CameraState currentCameraState;
+
+    public GameObject settingsPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ARCamera.SetActive(false);
         Hidden.SetActive(true);
         Visible.SetActive(false);
+        settingsPanel.SetActive(false);
+
+        currentCameraState = CameraState.INACTIVE;
     }
 
     // Update is called once per frame
@@ -34,6 +46,9 @@ public class CameraManager : MonoBehaviour
         Hidden.SetActive(false);
         Visible.SetActive(true);
         ActivateARCamera();
+
+        currentCameraState = CameraState.ACTIVE;
+
         Debug.Log("Scanning started...");
     }
 
@@ -42,4 +57,15 @@ public class CameraManager : MonoBehaviour
         Debug.Log("Target Found!");
     }
 
+    public void ShowSettings()
+    {
+        if (settingsPanel.activeSelf == false)
+        {
+            settingsPanel.SetActive(true);
+        }
+        else
+        {
+            settingsPanel.SetActive(false);
+        }
+    }
 }
