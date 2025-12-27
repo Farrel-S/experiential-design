@@ -19,4 +19,11 @@ public class SceneSwitcher : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         Debug.Log("Switched to Scanner Scene");
     }
+
+    public void SwitchToCredits()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        Debug.Log("Switched to Credits Scene");
+    }
 }
+

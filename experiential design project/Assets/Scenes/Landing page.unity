@@ -762,6 +762,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 6dad771c7fc2588469597597ad26f075, type: 3}
   - sceneName: Home page
     sceneAsset: {fileID: 102900000, guid: ad41dfdcfb8f657449ff90ca30f31f58, type: 3}
+  - sceneName: Credits page
+    sceneAsset: {fileID: 102900000, guid: 6a95cd15a5d17dc428a4043eb55456f1, type: 3}
 --- !u!82 &1315775865
 AudioSource:
   m_ObjectHideFlags: 0
