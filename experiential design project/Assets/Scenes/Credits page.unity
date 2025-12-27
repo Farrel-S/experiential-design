@@ -198,14 +198,7 @@ MonoBehaviour:
 
 
 
-    background music:
-
-
-
-    sound effects
-
-
-'
+    background music:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a1229da3524afe40a60cea7787e795c, type: 2}
   m_sharedMaterial: {fileID: -4762613839782926870, guid: 2a1229da3524afe40a60cea7787e795c,
