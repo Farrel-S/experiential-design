@@ -23,5 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits page.unity
     guid: 6a95cd15a5d17dc428a4043eb55456f1
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 101456adf884a1a46b6bdd49963f86f3,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 967118b704222ac4d8de2b222780e4dc,
+      type: 2}
   m_UseUCBPForAssetBundles: 0
